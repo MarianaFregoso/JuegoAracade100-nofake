@@ -346,10 +346,10 @@ void actualizar() {
 		}
 	}
 
-	int disparar = glfwGetKey(window, GLFW_KEY_SPACE);
+	/*int disparar = glfwGetKey(window, GLFW_KEY_SPACE);
 	if (disparar == GLFW_PRESS) {
 		angulo -= ;
-	}
+	}*/
 
 	checarcolisiones();
 
