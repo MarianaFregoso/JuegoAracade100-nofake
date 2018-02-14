@@ -19,6 +19,10 @@ GLfloat red, green, blue;
 GLfloat ty = -0.8f;
 GLfloat tx = 0.0f;
 
+GLfloat ly = -0.77f;
+GLfloat lx = 0.0f;
+
+
 double tiempoAnterior = 0.0;
 double velocidad = 0.4;
 
@@ -27,6 +31,16 @@ GLfloat velocidadangular = 180.0f;
 
 GLfloat enemigox = 0.0f;
 GLfloat enemigoy = 0.6f;
+
+GLfloat enemigodosx = 0.2f;
+GLfloat enemigotresx = 0.4f;
+GLfloat enemigocuatrox = 0.6f;
+GLfloat enemigocincox = 0.8f;
+
+GLfloat enemigomenosdosx = -0.2f;
+GLfloat enemigomenostresx = -0.4f;
+GLfloat enemigomenoscuatrox = -0.6f;
+GLfloat enemigomenoscincox = -0.8f;
 
 void dibujarEnemigo() {
 	glPushMatrix();
@@ -47,6 +61,167 @@ void dibujarEnemigo() {
 	glPopMatrix();
 
 }
+
+void dibujarEnemigo2() {
+	glPushMatrix();
+	glTranslatef(enemigodosx, enemigoy, 0.0f);
+	glScalef(0.08f, 0.08f, 0.08f);
+	glBegin(GL_TRIANGLES); //Inicia la rutina con un modo de dibujo
+
+	glColor3f(1.0f, 0.0f, 0.0f);
+	glVertex3f(-1.0f, 0.0f, 0.0f);
+
+	glColor3f(0.0f, 1.0f, 0.0f);
+	glVertex3f(0.0f, 1.0f, 0.0f);
+
+	glColor3f(0.0f, 0.0f, 1.0f);
+	glVertex3f(1.0, 0.0f, 0.0f);
+
+	glEnd();//Finaliza la rutina
+	glPopMatrix();
+
+}
+
+void dibujarEnemigo3() {
+	glPushMatrix();
+	glTranslatef(enemigotresx, enemigoy, 0.0f);
+	glScalef(0.08f, 0.08f, 0.08f);
+	glBegin(GL_TRIANGLES); //Inicia la rutina con un modo de dibujo
+
+	glColor3f(1.0f, 0.0f, 0.0f);
+	glVertex3f(-1.0f, 0.0f, 0.0f);
+
+	glColor3f(0.0f, 1.0f, 0.0f);
+	glVertex3f(0.0f, 1.0f, 0.0f);
+
+	glColor3f(0.0f, 0.0f, 1.0f);
+	glVertex3f(1.0, 0.0f, 0.0f);
+
+	glEnd();//Finaliza la rutina
+	glPopMatrix();
+
+}
+
+void dibujarEnemigo4() {
+	glPushMatrix();
+	glTranslatef(enemigocuatrox, enemigoy, 0.0f);
+	glScalef(0.08f, 0.08f, 0.08f);
+	glBegin(GL_TRIANGLES); //Inicia la rutina con un modo de dibujo
+
+	glColor3f(1.0f, 0.0f, 0.0f);
+	glVertex3f(-1.0f, 0.0f, 0.0f);
+
+	glColor3f(0.0f, 1.0f, 0.0f);
+	glVertex3f(0.0f, 1.0f, 0.0f);
+
+	glColor3f(0.0f, 0.0f, 1.0f);
+	glVertex3f(1.0, 0.0f, 0.0f);
+
+	glEnd();//Finaliza la rutina
+	glPopMatrix();
+
+}
+
+void dibujarEnemigo5() {
+	glPushMatrix();
+	glTranslatef(enemigocincox, enemigoy, 0.0f);
+	glScalef(0.08f, 0.08f, 0.08f);
+	glBegin(GL_TRIANGLES); //Inicia la rutina con un modo de dibujo
+
+	glColor3f(1.0f, 0.0f, 0.0f);
+	glVertex3f(-1.0f, 0.0f, 0.0f);
+
+	glColor3f(0.0f, 1.0f, 0.0f);
+	glVertex3f(0.0f, 1.0f, 0.0f);
+
+	glColor3f(0.0f, 0.0f, 1.0f);
+	glVertex3f(1.0, 0.0f, 0.0f);
+
+	glEnd();//Finaliza la rutina
+	glPopMatrix();
+
+}
+
+void dibujarEnemigo2x() {
+	glPushMatrix();
+	glTranslatef(enemigomenosdosx, enemigoy, 0.0f);
+	glScalef(0.08f, 0.08f, 0.08f);
+	glBegin(GL_TRIANGLES); //Inicia la rutina con un modo de dibujo
+
+	glColor3f(1.0f, 0.0f, 0.0f);
+	glVertex3f(-1.0f, 0.0f, 0.0f);
+
+	glColor3f(0.0f, 1.0f, 0.0f);
+	glVertex3f(0.0f, 1.0f, 0.0f);
+
+	glColor3f(0.0f, 0.0f, 1.0f);
+	glVertex3f(1.0, 0.0f, 0.0f);
+
+	glEnd();//Finaliza la rutina
+	glPopMatrix();
+
+}
+
+void dibujarEnemigo3x() {
+	glPushMatrix();
+	glTranslatef(enemigomenostresx, enemigoy, 0.0f);
+	glScalef(0.08f, 0.08f, 0.08f);
+	glBegin(GL_TRIANGLES); //Inicia la rutina con un modo de dibujo
+
+	glColor3f(1.0f, 0.0f, 0.0f);
+	glVertex3f(-1.0f, 0.0f, 0.0f);
+
+	glColor3f(0.0f, 1.0f, 0.0f);
+	glVertex3f(0.0f, 1.0f, 0.0f);
+
+	glColor3f(0.0f, 0.0f, 1.0f);
+	glVertex3f(1.0, 0.0f, 0.0f);
+
+	glEnd();//Finaliza la rutina
+	glPopMatrix();
+
+}
+
+void dibujarEnemigo4x() {
+	glPushMatrix();
+	glTranslatef(enemigomenoscuatrox, enemigoy, 0.0f);
+	glScalef(0.08f, 0.08f, 0.08f);
+	glBegin(GL_TRIANGLES); //Inicia la rutina con un modo de dibujo
+
+	glColor3f(1.0f, 0.0f, 0.0f);
+	glVertex3f(-1.0f, 0.0f, 0.0f);
+
+	glColor3f(0.0f, 1.0f, 0.0f);
+	glVertex3f(0.0f, 1.0f, 0.0f);
+
+	glColor3f(0.0f, 0.0f, 1.0f);
+	glVertex3f(1.0, 0.0f, 0.0f);
+
+	glEnd();//Finaliza la rutina
+	glPopMatrix();
+
+}
+
+void dibujarEnemigo5x() {
+	glPushMatrix();
+	glTranslatef(enemigomenoscincox, enemigoy, 0.0f);
+	glScalef(0.08f, 0.08f, 0.08f);
+	glBegin(GL_TRIANGLES); //Inicia la rutina con un modo de dibujo
+
+	glColor3f(1.0f, 0.0f, 0.0f);
+	glVertex3f(-1.0f, 0.0f, 0.0f);
+
+	glColor3f(0.0f, 1.0f, 0.0f);
+	glVertex3f(0.0f, 1.0f, 0.0f);
+
+	glColor3f(0.0f, 0.0f, 1.0f);
+	glVertex3f(1.0, 0.0f, 0.0f);
+
+	glEnd();//Finaliza la rutina
+	glPopMatrix();
+
+}
+
 
 void dibujarheroe() {
 	glPushMatrix();
@@ -69,17 +244,82 @@ void dibujarheroe() {
 	glPopMatrix();
 }
 
+void bala()
+{
+	glPushMatrix();
+	glTranslatef(lx, ly, 0.0f);
+	glRotatef(angulo, 0.0f, 0.0f, 1.0f);
+	glScalef(0.05f, 0.05f, 0.05f);
+	glBegin(GL_TRIANGLES); //Inicia la rutina con un modo de dibujo
+
+	glColor3f(1.0f, 0.0f, 0.0f);
+	glVertex3f(-1.0f, 0.0f, 0.0f);
+
+	glColor3f(0.0f, 1.0f, 0.0f);
+	glVertex3f(0.0f, 1.0f, 0.0f);
+
+	glColor3f(0.0f, 0.0f, 1.0f);
+	glVertex3f(1.0, 0.0f, 0.0f);
+
+	glEnd();//Finaliza la rutina
+	glPopMatrix();
+}
+
+
 void dibujar()
 {
 	dibujarheroe();
 	dibujarEnemigo();
+	dibujarEnemigo2();
+	dibujarEnemigo3();
+	dibujarEnemigo4();
+	dibujarEnemigo5();
+	dibujarEnemigo2x();
+	dibujarEnemigo3x();
+	dibujarEnemigo4x();
+	dibujarEnemigo5x();
+	bala();
 }
 
 void checarcolisiones() {
-	if (tx >= enemigox - 0.06 &&
-		tx <= enemigox + 0.06 &&
-		ty >= enemigoy - 0.06 &&
-		ty <= enemigoy + 0.06) {
+	if (lx >= enemigox - 0.01 &&
+		lx <= enemigox + 0.01 &&
+		ly >= enemigoy - 0.01 &&
+		ly <= enemigoy + 0.01 &&
+		lx >= enemigodosx - 0.01 &&
+		lx <= enemigodosx + 0.01 &&
+		ly >= enemigoy - 0.01 &&
+		ly <= enemigoy + 0.01 &&
+		lx >= enemigotresx - 0.01 &&
+		lx <= enemigotresx + 0.01 &&
+		ly >= enemigoy - 0.01 &&
+		ly <= enemigoy + 0.01 &&
+		lx >= enemigocuatrox - 0.01 &&
+		lx <= enemigocuatrox + 0.01 &&
+		ly >= enemigoy - 0.01 &&
+		ly <= enemigoy + 0.01 &&
+		lx >= enemigocincox - 0.01 &&
+		lx <= enemigocincox + 0.01 &&
+		ly >= enemigoy - 0.01 &&
+		ly <= enemigoy + 0.01 &&
+		lx >= enemigomenosdosx - 0.01 &&
+		lx <= enemigomenosdosx + 0.01 &&
+		ly >= enemigoy - 0.01 &&
+		ly <= enemigoy + 0.01 &&
+		lx >= enemigomenostresx - 0.01 &&
+		lx <= enemigomenostresx + 0.01 &&
+		ly >= enemigoy - 0.01 &&
+		ly <= enemigoy + 0.01 &&
+		lx >= enemigomenoscuatrox - 0.01 &&
+		lx <= enemigomenoscuatrox + 0.01 &&
+		ly >= enemigoy - 0.01 &&
+		ly <= enemigoy + 0.01 &&
+		lx >= enemigomenoscincox - 0.01 &&
+		lx <= enemigomenoscincox + 0.01)
+	
+	
+	
+	{
 		exit(0);
 	}
 }
@@ -106,40 +346,15 @@ void actualizar() {
 		}
 	}
 
+	int disparar = glfwGetKey(window, GLFW_KEY_SPACE);
+	if (disparar == GLFW_PRESS) {
+		angulo -= ;
+	}
+
 	checarcolisiones();
 
 	tiempoAnterior = tiempoActual;
 }
-
-
-
-
-
-
-
-/*void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods) {
-
-if (ty <0.95 && key == GLFW_KEY_UP && action == GLFW_PRESS || action == GLFW_REPEAT)
-{
-ty += 0.05f;
-}
-
-if (ty > -1 && key == GLFW_KEY_DOWN && action == GLFW_PRESS || action == GLFW_REPEAT)
-{
-ty -= 0.05f;
-}
-
-
-if (tx <1 && key == GLFW_KEY_RIGHT && action == GLFW_PRESS || action == GLFW_REPEAT) {
-tx += 0.05f;}
-
-
-
-if (tx > -1 && key == GLFW_KEY_LEFT && action == GLFW_PRESS || action == GLFW_REPEAT){
-tx -= 0.05f;}
-
-
-}*/
 
 int main()
 {
