@@ -16,129 +16,132 @@ using namespace std;
 GLFWwindow *window;
 
 GLfloat red, green, blue;
-GLfloat ty = 0.0f;
+GLfloat ty = -0.8f;
 GLfloat tx = 0.0f;
 
- double tiempoAnterior = 0.0;
- double velocidad = 0.4; 
+double tiempoAnterior = 0.0;
+double velocidad = 0.4;
 
- GLfloat angulo = 0.0f;
- GLfloat velocidadangular = 180.0f;
+GLfloat angulo = 0.0f;
+GLfloat velocidadangular = 180.0f;
 
- GLfloat enemigox = 0.0f;
- GLfloat enemigoy = 0.6f;
+GLfloat enemigox = 0.0f;
+GLfloat enemigoy = 0.6f;
 
- void malo() {
-	 glPushMatrix();
-	 glTranslatef(enemigox, enemigoy, 0.0f);
-	 glScalef(0.06f, 0.06f, 0.06f);
-	 glBegin(GL_TRIANGLES); //Inicia la rutina con un modo de dibujo
+void dibujarEnemigo() {
+	glPushMatrix();
+	glTranslatef(enemigox, enemigoy, 0.0f);
+	glScalef(0.08f, 0.08f, 0.08f);
+	glBegin(GL_TRIANGLES); //Inicia la rutina con un modo de dibujo
 
-	 glColor3f(1.0f, 0.0f, 0.0f);
-	 glVertex3f(-1.0f, 0.0f, 0.0f);
+	glColor3f(1.0f, 0.0f, 0.0f);
+	glVertex3f(-1.0f, 0.0f, 0.0f);
 
-	 glColor3f(0.0f, 1.0f, 0.0f);
-	 glVertex3f(0.2f, 1.0f, 0.0f);
+	glColor3f(0.0f, 1.0f, 0.0f);
+	glVertex3f(0.0f, 1.0f, 0.0f);
 
-	 glColor3f(0.0f, 0.0f, 1.0f);
-	 glVertex3f(1.0, 0.0f, 0.0f);
+	glColor3f(0.0f, 0.0f, 1.0f);
+	glVertex3f(1.0, 0.0f, 0.0f);
 
-	 glEnd();//Finaliza la rutina
-	 glPopMatrix();
+	glEnd();//Finaliza la rutina
+	glPopMatrix();
 
- }
+}
 
- void dibujarpistola() {
-	 glPushMatrix();
-	 glTranslatef(tx, ty, 0.0f);
+void dibujarheroe() {
+	glPushMatrix();
+	glTranslatef(tx, ty, 0.0f);
 
-	 glRotatef(angulo, 0.0f, 0.0f, 1.0f);
-	 glScalef(0.10f, 0.10f, 0.10f);
-	 glBegin(GL_TRIANGLES); //Inicia la rutina con un modo de dibujo
+	glRotatef(angulo, 0.0f, 0.0f, 1.0f);
+	glScalef(0.08f, 0.08f, 0.08f);
+	glBegin(GL_TRIANGLES); //Inicia la rutina con un modo de dibujo
 
-	 glColor3f(1.0f, 0.6f, 0.0f);
-	 glVertex3f(-1.0f, 0.0f, 0.0f);
+	glColor3f(1.0f, 0.6f, 0.0f);
+	glVertex3f(-1.0f, 0.0f, 0.0f);
 
-	 glColor3f(0.6f, 1.0f, 0.0f);
-	 glVertex3f(0.0f, 1.0f, 0.0f);
+	glColor3f(0.6f, 1.0f, 0.0f);
+	glVertex3f(0.0f, 1.0f, 0.0f);
 
-	 glColor3f(0.6f, 0.0f, 1.0f);
-	 glVertex3f(1.0, 0.0f, 0.0f);
+	glColor3f(0.6f, 0.0f, 1.0f);
+	glVertex3f(1.0, 0.0f, 0.0f);
 
-	 glEnd();//Finaliza la rutina
-	 glPopMatrix();
- }
+	glEnd();//Finaliza la rutina
+	glPopMatrix();
+}
 
- void balas() {
-	 glPushMatrix();
-	 glTranslatef(tx, ty, 0.0f);
+void dibujar()
+{
+	dibujarheroe();
+	dibujarEnemigo();
+}
 
-	 glRotatef(angulo, 0.0f, 0.0f, 1.0f);
-	 glScalef(0.2f, 0.0f, 0.2f);
-	 glBegin(GL_TRIANGLES); //Inicia la rutina con un modo de dibujo
+void checarcolisiones() {
+	if (tx >= enemigox - 0.06 &&
+		tx <= enemigox + 0.06 &&
+		ty >= enemigoy - 0.06 &&
+		ty <= enemigoy + 0.06) {
+		exit(0);
+	}
+}
 
-	 glColor3f(1.0f, 0.6f, 0.0f);
-	 glVertex3f(-1.0f, 0.0f, 0.0f);
-
-	 glColor3f(0.6f, 1.0f, 0.0f);
-	 glVertex3f(0.0f, 1.0f, 0.0f);
-
-	 glColor3f(0.6f, 0.0f, 1.0f);
-	 glVertex3f(1.0, 0.0f, 0.0f);
-
-	 glEnd();//Finaliza la rutina
-	 glPopMatrix();
- }
-
- void dibujar()
- {
-	 dibujarpistola();
-	 malo();
-	 balas();
-	 
- }
-
- void checardebalas(){
-	 if (tx >= enemigox - 0.06 &&
-		 tx <= enemigox + 0.06 &&
-		 ty >= enemigoy - 0.06 &&
-		 ty <= enemigoy + 0.06) {
-		 exit(0);
-	 }
- }
-
- void actualizar() {
+void actualizar() {
 
 
-	 double tiempoActual = glfwGetTime();
-	 double Tiempotranscrrido = tiempoActual - tiempoAnterior;
+	double tiempoActual = glfwGetTime();
+	double Tiempotranscrrido = tiempoActual - tiempoAnterior;
 
-	 int estadoizq = glfwGetKey(window, GLFW_KEY_LEFT );
-	 if (estadoizq == GLFW_PRESS) {
-		 angulo += velocidadangular * Tiempotranscrrido;
-		 
-	 }
+	int estadoizq = glfwGetKey(window, GLFW_KEY_LEFT);
+	if (estadoizq == GLFW_PRESS) {
+		angulo += velocidadangular * Tiempotranscrrido;
+		if (angulo > 360) {
+			angulo -= 360.0f;
+		}
+	}
 
-	 int estadoderecha = glfwGetKey(window, GLFW_KEY_RIGHT);
-	 if (estadoderecha == GLFW_PRESS) {
-		 angulo -= velocidadangular * Tiempotranscrrido;
-		
-	 }
+	int estadoderecha = glfwGetKey(window, GLFW_KEY_RIGHT);
+	if (estadoderecha == GLFW_PRESS) {
+		angulo -= velocidadangular * Tiempotranscrrido;
+		if (angulo > 0) {
+			angulo += 360.0f;
+		}
+	}
 
-	 int estadoderecha = glfwGetKey(window, GLFW_KEY_SPACE);
-	 if (estadoderecha == GLFW_PRESS) {      
-		 angulo -= velocidadangular * Tiempotranscrrido;
+	checarcolisiones();
 
-	 }
-
-
-	/* checarcolisiones();*/
-	  
-	 tiempoAnterior = tiempoActual; 
- }
+	tiempoAnterior = tiempoActual;
+}
 
 
-int main() 
+
+
+
+
+
+/*void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods) {
+
+if (ty <0.95 && key == GLFW_KEY_UP && action == GLFW_PRESS || action == GLFW_REPEAT)
+{
+ty += 0.05f;
+}
+
+if (ty > -1 && key == GLFW_KEY_DOWN && action == GLFW_PRESS || action == GLFW_REPEAT)
+{
+ty -= 0.05f;
+}
+
+
+if (tx <1 && key == GLFW_KEY_RIGHT && action == GLFW_PRESS || action == GLFW_REPEAT) {
+tx += 0.05f;}
+
+
+
+if (tx > -1 && key == GLFW_KEY_LEFT && action == GLFW_PRESS || action == GLFW_REPEAT){
+tx -= 0.05f;}
+
+
+}*/
+
+int main()
 {
 	//Propiedades de la ventana
 	GLfloat ancho = 1024;
@@ -180,7 +183,7 @@ int main()
 
 	red = green = blue = 0.0f;
 
-	tiempoAnterior = glfwGetTime(); 
+	tiempoAnterior = glfwGetTime();
 
 	//Ciclo de dibujo
 	while (!glfwWindowShouldClose(window)) {
@@ -205,6 +208,6 @@ int main()
 	glfwDestroyWindow(window);
 	glfwTerminate();
 
-    return 0;
+	return 0;
 }
 
